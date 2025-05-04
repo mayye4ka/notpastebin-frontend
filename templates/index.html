@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>notpastebin</title> 
+</head>
+<body>
+    <header class="header-title">
+            <h1>notpastebin</h1>
+    </header>
+    <div class="container">
+        <div id="input-box">
+        {{ if .IsMainPage }}
+        <form method="post" action="/create">
+            <textarea name="text" id="addText" cols="30" rows="10" placeholder="Take a note.."></textarea>
+            <button id="shareNote">share</button>
+        </form>
+        {{ end }}
+        {{ if .IsEditPage }}
+        <form method="post" action="/update">
+            <textarea name="text" id="addText" cols="30" rows="10" placeholder="Take a note..">{{.NoteText}}</textarea>
+            <button id="updateNote">update</button>
+        </form>
+        <form method="post" action="/delete">
+            <button id="deleteNote">delete</button>
+        </form>
+        <button id="shareNote">share</button>
+        reader hash is {{.ReaderHash}}
+        {{ end }}
+        {{ if .IsReadPage }}
+        <textarea disabled name="text" id="addText" cols="30" rows="10" placeholder="Take a note..">{{.NoteText}}</textarea>
+        <button id="shareNote">share</button>
+        reader hash is {{.ReaderHash}}
+        {{ end }}
+        </div>
+    </div>
+    {{.}}
+</body>
+</html>
