@@ -8,35 +8,37 @@
     <title>notpastebin</title> 
 </head>
 <body>
-    <header class="header-title">
-            <h1>notpastebin</h1>
+    <header>
+        <h1>notpastebin</h1>
     </header>
-    <div class="container">
-        <div id="input-box">
+    <div id="main">
         {{ if .IsMainPage }}
         <form method="post" action="/create">
-            <textarea name="text" id="addText" cols="30" rows="10" placeholder="Take a note.."></textarea>
-            <button id="shareNote">share</button>
+            <textarea name="text" cols="30" rows="10" placeholder="Take a note.."></textarea>
+            <button class="bottom-button">save</button>
         </form>
         {{ end }}
         {{ if .IsEditPage }}
-        <form method="post" action="/update">
-            <textarea name="text" id="addText" cols="30" rows="10" placeholder="Take a note..">{{.NoteText}}</textarea>
-            <button id="updateNote">update</button>
+        <form method="post" action="/update/{{.AdminHash}}">
+            <textarea name="text" cols="30" rows="10" placeholder="Take a note..">{{.NoteText}}</textarea>
+            <button class="bottom-button">update</button>
         </form>
-        <form method="post" action="/delete">
-            <button id="deleteNote">delete</button>
+        <form method="post" action="/delete/{{.AdminHash}}">
+            <button class="bottom-button">delete</button>
         </form>
-        <button id="shareNote">share</button>
-        reader hash is {{.ReaderHash}}
+        <button class="bottom-button" onclick="copyLink('{{.ReaderUrl}}')">copy link</button>
         {{ end }}
         {{ if .IsReadPage }}
-        <textarea disabled name="text" id="addText" cols="30" rows="10" placeholder="Take a note..">{{.NoteText}}</textarea>
-        <button id="shareNote">share</button>
-        reader hash is {{.ReaderHash}}
+        <textarea disabled name="text" cols="30" rows="10" placeholder="Take a note..">{{.NoteText}}</textarea>
+        <button class="bottom-button" onclick="copyLink('{{.ReaderUrl}}')">copy link</button>
         {{ end }}
-        </div>
     </div>
-    {{.}}
+    <script>
+        function copyLink(link) {
+            console.log(link);
+            navigator.clipboard.writeText(link);
+            alert("Note read-only link copied to clipboard")
+        }
+    </script>
 </body>
 </html>

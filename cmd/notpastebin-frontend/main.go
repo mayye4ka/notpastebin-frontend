@@ -21,6 +21,7 @@ import (
 type config struct {
 	BackendAddr string `env:"BACKEND_ADDR"`
 	HttpPort    int    `env:"HTTP_PORT"`
+	SiteUrl     string `env:"SITE_URL"`
 }
 
 func readConfig() (*config, error) {
@@ -59,7 +60,7 @@ func main() {
 	}
 	backendClient := pbapi.NewNotPasteBinClient(conn)
 
-	svc, err := service.New(cfg.HttpPort, backendClient, logger)
+	svc, err := service.New(cfg.HttpPort, backendClient, logger, cfg.SiteUrl)
 	if err != nil {
 		logger.Fatal().Err(err).Msg("can't create service")
 	}
