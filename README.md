@@ -1,3 +1,5 @@
+![Main page](https://github.com/mayye4ka/notpastebin-frontend/raw/master/imgs/admin.png)
+
 ### NotPastebin-Frontend
 
 Frontend для приложения заметок - notpastebin. 
