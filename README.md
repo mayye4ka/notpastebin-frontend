@@ -6,7 +6,7 @@ Frontend для приложения заметок - notpastebin.
 
 Для полноценной работы нужен [backend](https://github.com/mayye4ka/notpastebin).
 
-* Заполните  `.env.local` и выполните `make run` для запуска локально(нужен docker compose)
+* Заполните  `.env.local` и выполните `make run` для запуска локально
 
 #### ToDo
 
