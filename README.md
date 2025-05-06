@@ -2,14 +2,12 @@
 
 ### NotPastebin-Frontend
 
-Frontend для приложения заметок - notpastebin. 
+Notpastebin - cервис для создания заметок, который позволяет делиться заметкой только для чтения или с возможностью редактирования/удаления.
+
+Frontend для приложения notpastebin. 
 
 #### Запуск
 
-Для полноценной работы нужен [backend](https://github.com/mayye4ka/notpastebin).
+* Запустите [backend](https://github.com/mayye4ka/notpastebin)
 
 * Заполните  `.env.local` и выполните `make run` для запуска локально
-
-#### ToDo
-
-- [ ] Улучшить дизайн
